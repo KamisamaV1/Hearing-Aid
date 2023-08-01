@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".HomeFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- TextView for "Noise Suppression Modes" -->
+        <TextView
+            android:id="@+id/textViewNoiseSuppression"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Noise Suppression Mode"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="100dp"
+            android:layout_marginStart="50dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewNoiseSuppression"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:id="@+id/radioGroupContainer"
+            >
+
+            <RadioGroup
+                android:id="@+id/radioGroupNoiseSuppression"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                >
+
+                <!-- Radio Buttons for "On" and "Off" -->
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/radioButtonOn"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/radio_button_on"
+                    android:button="@android:color/transparent"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:text="On"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@drawable/checked"/>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/neon_blue" />
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/radioButtonOff"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:text="Off"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:checked="true"
+                    android:background="@drawable/radio_button_off"
+                    android:button="@android:color/transparent"
+                    android:textColor="@drawable/checked"/>
+
+            </RadioGroup>
+
+        </RelativeLayout>
+
+        <!-- TextView for "Gain" -->
+        <TextView
+            android:id="@+id/textViewGain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gain"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_below="@id/radioGroupContainer"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="50dp" />
+
+        <!-- SeekBar for "Gain" -->
+        <SeekBar
+            android:id="@+id/seekBarGain"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewGain"
+            android:layout_centerHorizontal="true"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:max="60"
+            android:progress="30"
+            android:layout_marginTop="10dp"
+            android:thumbTint="@color/prussian_blue"
+            android:progressTint="@color/prussian_blue"
+            android:progressBackgroundTint="@color/neon_blue" />
+
+    </RelativeLayout>
+
+</FrameLayout>

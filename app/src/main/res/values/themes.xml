@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.VoiceCraft" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Customize the background color -->
+        <item name="android:windowBackground">@color/white</item>
+        <!-- Customize the button color -->
+        <item name="colorAccent">@color/prussian_blue</item>
+        <!-- Customize other attributes as needed -->
+    </style>
+    <style name="Theme.VoiceCraft" parent="Base.Theme.VoiceCraft" />
+</resources>
