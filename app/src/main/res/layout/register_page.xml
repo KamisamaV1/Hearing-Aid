@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="228dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/name_register"
+            android:inputType="text"
+            android:layout_width="329dp"
+            android:layout_height="54dp"
+            android:background="@drawable/textview_stroke"
+            android:paddingStart="12sp"
+            android:gravity="center_vertical"
+            android:paddingTop="3sp"
+            android:hint="Name"
+            android:textColorHint="@color/prussian_blue"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20sp" />
+
+        <EditText
+            android:id="@+id/email_register"
+            android:inputType="textEmailAddress"
+            android:layout_width="329dp"
+            android:layout_height="54dp"
+            android:background="@drawable/textview_stroke"
+            android:paddingStart="12sp"
+            android:gravity="center_vertical"
+            android:paddingTop="3sp"
+            android:hint="Email"
+            android:textColorHint="@color/prussian_blue"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20sp" />
+
+        <EditText
+            android:id="@+id/username_register"
+            android:inputType="text"
+            android:layout_width="329dp"
+            android:layout_height="54dp"
+            android:background="@drawable/textview_stroke"
+            android:paddingStart="12sp"
+            android:gravity="center_vertical"
+            android:paddingTop="3sp"
+            android:hint="Username"
+            android:textColorHint="@color/prussian_blue"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20sp" />
+
+        <EditText
+            android:id="@+id/password_register"
+            android:inputType="textPassword"
+            android:layout_width="329dp"
+            android:layout_height="54dp"
+            android:background="@drawable/textview_stroke"
+            android:paddingStart="12sp"
+            android:paddingTop="3sp"
+            android:hint="Password"
+            android:gravity="center_vertical"
+            android:textColorHint="@color/prussian_blue"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20sp" />
+
+        <Spinner
+            android:id="@+id/gender_list"
+            android:layout_width="329dp"
+            android:layout_height="54dp"
+            android:foreground="@drawable/textview_stroke" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20sp" />
+
+        <EditText
+            android:id="@+id/address_register"
+            android:inputType="textPostalAddress"
+            android:layout_width="329dp"
+            android:layout_height="54dp"
+            android:background="@drawable/textview_stroke"
+            android:paddingStart="12sp"
+            android:paddingTop="3sp"
+            android:gravity="center_vertical"
+            android:hint="Address"
+            android:textColorHint="@color/prussian_blue"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <Button
+
+        android:id="@+id/registerButton"
+        android:layout_width="256dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="350dp"
+        android:backgroundTint="@color/black"
+        android:text="Register"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="107dp"
+        android:gravity="center_horizontal"
+
+        android:orientation="horizontal"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerButton">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="By registering you agree to our "
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/privacyPolicy"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text=" Privacy Policy."
+            android:textColor="@color/prussian_blue"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/loginback_imageBtn"
+        android:layout_width="60dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="56dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="Back"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.057"
+        app:srcCompat="@drawable/baseline_arrow_back_24" />
+</androidx.constraintlayout.widget.ConstraintLayout>

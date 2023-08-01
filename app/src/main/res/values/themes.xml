@@ -1,0 +1,12 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MenuScreens" parent="Theme.Material3.Light.NoActionBar">
+<!--    <style name="Base.Theme.MenuScreens" parent="Theme.AppCompat.Light.NoActionBar">-->
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+    
+    <style name="Theme.MenuScreens" parent="Base.Theme.MenuScreens" />
+</resources>

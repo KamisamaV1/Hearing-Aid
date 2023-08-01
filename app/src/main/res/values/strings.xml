@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">HearingAid</string>
+    <string-array name="genders">
+        <item>Select a Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+    <string name="privacyEssay">Privacy Policy Placeholder</string>
+    <string name="Page1">Tap the Start Test button to start the sound test. </string>
+    <string name="Page2">The tone will play automatically at 20 dB on the first time and the frequency will increase automatically until you respond.</string>
+    <string name="Page3"></string>
+    <string name="Page4"></string>
+    <string name="Page5"></string>
+    <string name="Page6"></string>
+    <string name="HearSignal">Can you hear the signal?</string>
+</resources>
