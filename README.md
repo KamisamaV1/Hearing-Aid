@@ -1,5 +1,3 @@
-# Hearing-Aid
-
 1.	
 Task: Creating Android Screens with Limited Functionality (using XML and Java).
 
