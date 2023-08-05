@@ -1,5 +1,5 @@
 # Hearing-Aid
-This project aims to provide affordable hearing aids to the masses by utilizing an Android device.
+
 1.	
 Task: Creating Android Screens with Limited Functionality (using XML and Java).
 
