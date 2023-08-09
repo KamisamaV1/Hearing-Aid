@@ -3,46 +3,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/jordy_blue"
+    tools:context=".HearingTestActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/newleftBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-
-            android:backgroundTint="#03A9F4"
-            android:text="Left"
-            android:textSize="30sp" />
-
-        <Space
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/radioGroupEar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.25" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/newrightBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/leftRadioButton"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/radio_btn"
+                android:button="@android:color/transparent"
+                android:checked="true"
+                android:gravity="center"
+                android:text="Left"
+                android:textColor="@drawable/checked"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
-            android:backgroundTint="#AAAAAA"
-            android:text="Right"
-            android:textSize="30sp" />
-    </LinearLayout>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.25" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rightRadioButton"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/radio_btn"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:text="Right"
+                android:textColor="@drawable/checked"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </RadioGroup>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -61,22 +78,21 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="#8BC34A"
+            android:backgroundTint="#1FB655"
             android:text="CAN HEAR"
             android:textSize="20sp" />
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.55" />
+            android:layout_weight="0.8" />
 
         <Button
             android:id="@+id/noBtn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-
-            android:backgroundTint="#F44336"
+            android:backgroundTint="#CF2734"
             android:text="CAN'T HEAR"
             android:textSize="20sp" />
     </LinearLayout>
@@ -84,24 +100,25 @@
     <Button
         android:id="@+id/stopTest"
         android:layout_width="250dp"
-        android:layout_height="70dp"
+        android:layout_height="65dp"
         android:layout_marginStart="131dp"
         android:layout_marginEnd="130dp"
         android:layout_marginBottom="48dp"
         android:backgroundTint="@color/prussian_blue"
-        android:text="STOP TEST"
+        android:text="Stop Test"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
+
     <ImageView
         android:id="@+id/headphoneImg"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="86dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="18dp"
         android:layout_marginEnd="86dp"
         android:adjustViewBounds="true"
         android:cropToPadding="true"
@@ -109,37 +126,50 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
         app:srcCompat="@drawable/headphoneleft"
         tools:srcCompat="@drawable/headphoneleft" />
 
     <TextView
-        android:id="@+id/upText"
+        android:id="@+id/queText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Can you hear the signal?"
+        android:layout_marginTop="40dp"
+        android:text="Can you Hear the Signal?"
         android:textColor="@color/black"
-        android:textSize="35sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.64" />
+        app:layout_constraintTop_toBottomOf="@+id/headphoneImg"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/downText"
+        android:id="@+id/dbText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="50 dB"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="@id/fqText"
+        app:layout_constraintStart_toStartOf="@id/fqText"
+        app:layout_constraintTop_toBottomOf="@+id/queText" />
+
+    <TextView
+        android:id="@+id/fqText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="154dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="154dp"
-        android:layout_marginBottom="16dp"
-        android:textColor="@color/black"
-        android:text="5000Hz"
-        android:textSize="48sp"
+        android:layout_marginBottom="6dp"
+        android:text="5000 Hz"
+        android:textColor="@color/white"
+        android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/upText" />
+        app:layout_constraintTop_toBottomOf="@+id/dbText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HearTestFragment">
+    tools:context=".HearTestFragment"
+    android:background="@color/jordy_blue">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

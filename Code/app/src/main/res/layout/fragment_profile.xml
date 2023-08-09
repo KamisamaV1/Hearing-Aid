@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/jordy_blue"
     tools:context=".ProfileFragment">
 
     <RelativeLayout
@@ -17,12 +18,11 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="User Profile"
-            android:textColor="@color/black"
+            android:textColor="@color/prussian_blue"
             android:textSize="28sp"
             android:textStyle="bold" />
 
     </RelativeLayout>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -35,7 +35,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
             android:layout_marginEnd="20dp"
-            android:background="@drawable/border"
+            android:background="@drawable/card_background"
             android:orientation="vertical"
             android:padding="15dp">
 
@@ -70,7 +70,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
+                android:background="@color/pewter" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -102,7 +102,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
+                android:background="@color/pewter" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -135,7 +135,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
+                android:background="@color/pewter" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -168,7 +168,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
+                android:background="@color/pewter" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -202,7 +202,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginBottom="28dp"
-                android:background="@android:color/darker_gray" />
+                android:background="@color/pewter" />
         </LinearLayout>
 
         <Button

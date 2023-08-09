@@ -31,13 +31,13 @@ public class InstructionsPage extends AppCompatActivity {
 
 
         backBtn.setOnClickListener(v -> {
-            if(getitem(0)>0){
-                mSlideViewPager.setCurrentItem(getitem(-1), true);
+            if(getItem(0)>0){
+                mSlideViewPager.setCurrentItem(getItem(-1), true);
             }
         });
         nextBtn.setOnClickListener(v -> {
-            if (getitem(0) < 3){
-                mSlideViewPager.setCurrentItem(getitem(1), true);
+            if (getItem(0) < 3){
+                mSlideViewPager.setCurrentItem(getItem(1), true);
             }else {
 
                 Intent i = new Intent(InstructionsPage.this, HearingTestActivity.class);
@@ -57,19 +57,19 @@ public class InstructionsPage extends AppCompatActivity {
         viewPagerAdapter = new ViewPagerAdapter(this);
 
         mSlideViewPager.setAdapter(viewPagerAdapter);
-        setUpindicator(0);
+        setUpIndicator(0);
         mSlideViewPager.addOnPageChangeListener(viewListener);
 
     }
 
-    public void setUpindicator(int position){
+    public void setUpIndicator(int position){
         dots = new TextView[4];
         mDotLayout.removeAllViews();
         for (int i = 0; i < dots.length; i++) {
             dots[i] = new TextView(this);
             dots[i].setText(Html.fromHtml("&#8226", Html.FROM_HTML_MODE_LEGACY));
             dots[i].setTextSize(35);
-            dots[i].setTextColor(getResources().getColor(R.color.neon_blue, getApplicationContext().getTheme()));  //inactive dots
+            dots[i].setTextColor(getResources().getColor(R.color.gainsboro, getApplicationContext().getTheme()));  //inactive dots
             mDotLayout.addView(dots[i]);
 
         }
@@ -85,7 +85,7 @@ public class InstructionsPage extends AppCompatActivity {
 
         @Override
         public void onPageSelected(int position) {
-            setUpindicator(position);
+            setUpIndicator(position);
             if (position > 0){
                 backBtn.setVisibility(View.VISIBLE);
             }else {
@@ -105,7 +105,7 @@ public class InstructionsPage extends AppCompatActivity {
 
         }
     };
-    private int getitem(int i){
+    private int getItem(int i){
         return mSlideViewPager.getCurrentItem() + i;
     }
 }

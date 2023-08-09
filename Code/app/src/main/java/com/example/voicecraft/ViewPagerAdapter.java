@@ -1,6 +1,7 @@
 package com.example.voicecraft;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,11 +47,15 @@ public class ViewPagerAdapter extends PagerAdapter {
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.slider_layout,container,false);
 
-        ImageView slidetitleimage = (ImageView) view.findViewById(R.id.titleImage);
-        TextView slidedescription = (TextView) view.findViewById(R.id.description);
+        ImageView slideTitleImage = (ImageView) view.findViewById(R.id.titleImage);
+        TextView slideDescription = (TextView) view.findViewById(R.id.description);
 
-        slidetitleimage.setImageResource(images[position]);
-        slidedescription.setText(descriptions[position]);
+        slideTitleImage.setImageResource(images[position]);
+        slideDescription.setText(descriptions[position]);
+
+        if (position == 0) {
+            slideDescription.setText(Html.fromHtml(context.getString(R.string.Page1), Html.FROM_HTML_MODE_COMPACT));
+        }
 
         container.addView(view);
 

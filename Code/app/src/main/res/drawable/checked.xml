@@ -2,5 +2,5 @@
     <!-- Checked state -->
     <item android:state_checked="true" android:color="@color/white" />
     <!-- Unchecked state -->
-    <item android:state_checked="false" android:color="@color/gy_pewter" />
+    <item android:state_checked="false" android:color="@color/pewter" />
 </selector>
