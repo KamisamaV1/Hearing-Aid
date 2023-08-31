@@ -117,7 +117,7 @@ public class RegisterActivity extends AppCompatActivity {
                                             Intent loginRedirect = new Intent(RegisterActivity.this, LoginActivity.class);
                                             startActivity(loginRedirect);
                                         }
-                                    }, 1000);
+                                    }, 100);
                                 }
                             });
                         }

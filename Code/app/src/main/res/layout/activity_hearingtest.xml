@@ -7,6 +7,19 @@
     android:background="@color/jordy_blue"
     tools:context=".HearingTestActivity">
 
+    <Button
+        android:id="@+id/playButton"
+        android:layout_width="150dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/prussian_blue"
+        android:text="Play"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.091"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
@@ -18,46 +31,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <RadioGroup
-            android:id="@+id/radioGroupEar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/leftRadioButton"
-                android:layout_width="100dp"
-                android:layout_height="55dp"
-                android:layout_gravity="center_vertical"
-                android:background="@drawable/radio_btn"
-                android:button="@android:color/transparent"
-                android:checked="true"
-                android:gravity="center"
-                android:text="Left"
-                android:textColor="@drawable/checked"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.25" />
-
-            <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/rightRadioButton"
-                android:layout_width="100dp"
-                android:layout_height="55dp"
-                android:layout_gravity="center_vertical"
-                android:background="@drawable/radio_btn"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="Right"
-                android:textColor="@drawable/checked"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-        </RadioGroup>
 
     </RelativeLayout>
 
@@ -97,21 +70,19 @@
             android:textSize="20sp" />
     </LinearLayout>
 
+
     <Button
         android:id="@+id/stopTest"
-        android:layout_width="250dp"
+        android:layout_width="150dp"
         android:layout_height="65dp"
-        android:layout_marginStart="131dp"
-        android:layout_marginEnd="130dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="@color/prussian_blue"
-        android:text="Stop Test"
+        android:text="Stop"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.908"
         app:layout_constraintStart_toStartOf="parent" />
-
 
     <ImageView
         android:id="@+id/headphoneImg"
@@ -134,15 +105,14 @@
         android:id="@+id/queText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:text="Can you Hear the Signal?"
         android:textColor="@color/black"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headphoneImg"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/headphoneImg" />
 
     <TextView
         android:id="@+id/dbText"
@@ -153,8 +123,9 @@
         android:textColor="@color/white"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="@id/fqText"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="@id/fqText"
-        app:layout_constraintTop_toBottomOf="@+id/queText" />
+        app:layout_constraintTop_toBottomOf="@+id/videoView" />
 
     <TextView
         android:id="@+id/fqText"
@@ -169,7 +140,65 @@
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dbText" />
+        app:layout_constraintTop_toBottomOf="@+id/dbText"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupEar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/leftRadioButton"
+            android:layout_width="123dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/radio_btn"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:clickable="false"
+            android:gravity="center"
+            android:text="Left"
+            android:textColor="@drawable/checked"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="500dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.25" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rightRadioButton"
+            android:layout_width="123dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/radio_btn"
+            android:button="@android:color/transparent"
+            android:clickable="false"
+            android:gravity="center"
+            android:text="Right"
+            android:textColor="@drawable/checked"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    </RadioGroup>
+
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="215dp"
+        android:layout_height="104dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/queText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
