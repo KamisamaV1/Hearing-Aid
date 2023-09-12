@@ -20,7 +20,14 @@ public class LoginActivity extends AppCompatActivity {
     Button loginButton;
     EditText uName, pWord;
 
+    private String username;
+
     AppDatabase appDatabase;
+
+    public String getUsername() {
+        return username;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         forgotPassword = findViewById(R.id.forgotPassword);
         uName = findViewById(R.id.userName);
         pWord = findViewById(R.id.passWord);
+        username = uName.getText().toString().trim();
         forgotPassword.setOnClickListener(view -> {
             Intent intent = new Intent(LoginActivity.this, ForgotPassword.class);
             startActivity(intent);

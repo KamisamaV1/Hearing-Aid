@@ -6,7 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {User.class},version=35)
+@Database(entities = {User.class, Calibration.class},version=39)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String dbName="AppDB";
     private static AppDatabase appDatabase;
@@ -19,4 +19,5 @@ public abstract class AppDatabase extends RoomDatabase {
         return appDatabase;
     }
     public abstract UserDao userDao();
+    public abstract CalibrationDao calibrationDao();
 }
