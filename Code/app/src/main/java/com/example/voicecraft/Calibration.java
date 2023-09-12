@@ -7,8 +7,7 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 
-@Entity(tableName = "calibration_table",
-        foreignKeys = @ForeignKey(entity = User.class, parentColumns = "userName", childColumns = "user_name"))
+@Entity()
 public class Calibration {
 
     @PrimaryKey(autoGenerate = true)
@@ -16,50 +15,58 @@ public class Calibration {
     @ColumnInfo(name = "id")
     private int id;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @ColumnInfo(name = "frequency")
-    private int[] frequency;
+    private int frequency;
 
     @ColumnInfo(name = "loss_left_ear")
-    private int[] lossLeftEar;
+    private int lossLeftEar;
 
     @ColumnInfo(name = "loss_right_ear")
-    private int[] lossRightEar;
+    private int lossRightEar;
 
     @ColumnInfo(name = "calibration_date")
-    private int calibrationDate;
+    private String calibrationDate;
 
-    @ColumnInfo(name = "user_name")
+    @ColumnInfo(name = "userName")
     private String userName;
 
-    public int[] getFrequency() {
+    public int getFrequency() {
         return frequency;
     }
 
-    public void setFrequency(int[] frequency) {
+    public void setFrequency(int frequency) {
         this.frequency = frequency;
     }
 
-    public int[] getLossLeftEar() {
+    public int getLossLeftEar() {
         return lossLeftEar;
     }
 
-    public void setLossLeftEar(int[] lossLeftEar) {
+    public void setLossLeftEar(int lossLeftEar) {
         this.lossLeftEar = lossLeftEar;
     }
 
-    public int[] getLossRightEar() {
+    public int getLossRightEar() {
         return lossRightEar;
     }
 
-    public void setLossRightEar(int[] lossRightEar) {
+    public void setLossRightEar(int lossRightEar) {
         this.lossRightEar = lossRightEar;
     }
 
-    public int getCalibrationDate() {
+    public String getCalibrationDate() {
         return calibrationDate;
     }
 
-    public void setCalibrationDate(int calibrationDate) {
+    public void setCalibrationDate(String  calibrationDate) {
         this.calibrationDate = calibrationDate;
     }
 

@@ -12,8 +12,8 @@ public interface CalibrationDao {
     @Insert
     void insertCalibration(Calibration calibration);
 
-    @Query("SELECT * FROM calibration_table")
-    List<Calibration> getAllCalibrations();
+    @Query("SELECT * FROM Calibration WHERE userName=(:userName) and calibration_date=(:calibrationDate)")
+    List<Calibration> getAllCalibrations(String userName, String calibrationDate);
 
 }
 
