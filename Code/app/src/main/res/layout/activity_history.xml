@@ -11,16 +11,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:backgroundTint="#2196F3"
+        android:fitsSystemWindows="true"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="84dp"
+            android:layout_gravity="center"
+            android:background="@color/jordy_blue"
+            android:gravity="center"
+            android:text="@string/test_history"
+            android:textColor="@color/prussian_blue"
+            android:textSize="34sp"
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="253dp"
-            android:layout_height="432dp" />
+            android:layout_width="match_parent"
+            android:layout_height="583dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            tools:listitem="@layout/history_cardview_design" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

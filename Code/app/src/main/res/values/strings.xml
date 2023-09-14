@@ -19,4 +19,5 @@
     <string name="Page3">The test will run for each ear, shown by the button color and headphone. Blue means active and Grey means inactive. Left ear first, then right.</string>
     <string name="Page4">Press the stop button to stop the test at any given time. Stopping the test will not save any test results.</string>
     <string name="HearSignal">Can you hear the signal?</string>
+    <string name="test_history">Test History</string>
 </resources>
