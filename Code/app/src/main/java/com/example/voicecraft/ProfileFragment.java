@@ -21,6 +21,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 public class ProfileFragment extends Fragment {
     private AppDatabase appDatabase;
     private Button logoutButton;
+    private Button history_button;
     private String username;
 
     @Nullable
@@ -28,6 +29,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         logoutButton = rootView.findViewById(R.id.logout_Button);
+        history_button = rootView.findViewById(R.id.history_button);
 
         SharedPreferences sharedPref = requireActivity().getSharedPreferences("user_shared_preferences", requireContext().MODE_PRIVATE);
         username = sharedPref.getString("loggedInUserName", "");
@@ -36,6 +38,14 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 showLogoutDialog();
+            }
+        });
+
+        history_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(getActivity(), HistoryActivity.class);
+                startActivity(in);
             }
         });
         appDatabase = Room.databaseBuilder(requireContext(), AppDatabase.class, "AppDB")
