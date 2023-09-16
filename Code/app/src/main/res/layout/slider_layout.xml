@@ -14,21 +14,21 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:contentDescription="TODO"
+        android:cropToPadding="false"
         android:scaleType="fitStart"
-        android:src="@drawable/page3"></ImageView>
+        android:src="@drawable/page4"></ImageView>
 
 
     <TextView
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
         android:layout_marginTop="120dp"
         android:layout_marginBottom="80dp"
-        android:layout_marginHorizontal="30dp"
+        android:text="@string/Page4"
         android:textAlignment="center"
         android:textColor="@color/prussian_blue"
-        android:textSize="24sp"
-        android:text="@string/Page3">
-    </TextView>
+        android:textSize="24sp"></TextView>
 
 </LinearLayout>
