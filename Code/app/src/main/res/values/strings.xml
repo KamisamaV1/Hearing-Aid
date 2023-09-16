@@ -17,6 +17,6 @@
 
     <string name="Page2">The tone will play automatically the first time and the frequency will increase automatically until you press \n \" Can Hear\" or \" Can\'t Hear\".</string>
     <string name="Page3">The test will run for each ear, shown by the button color and headphone. Blue means active and Grey means inactive. Left ear first, then right.</string>
-    <string name="Page4">Press the stop button to stop the test at any given time. Stopping the test will not save any test results.</string>
+    <string name="Page4">Press the Play button to play the tone and Press the Stop button to stop the test at any given time. Stopping the test will not save any test results.</string>
     <string name="HearSignal">Can you hear the signal?</string>
 </resources>

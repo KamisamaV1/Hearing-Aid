@@ -118,8 +118,8 @@
         android:id="@+id/dbText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:text="50 dB"
+        android:layout_marginTop="50dp"
+        android:text="Decibel: 10 dB"
         android:textColor="@color/white"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="@id/fqText"
@@ -132,18 +132,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="154dp"
-        android:layout_marginTop="6dp"
         android:layout_marginEnd="154dp"
         android:layout_marginBottom="6dp"
-        android:text="5000 Hz"
+        android:text="Frequency: 200 Hz"
         android:textColor="@color/white"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.516"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dbText"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <RadioGroup
         android:id="@+id/radioGroupEar"
@@ -197,9 +194,11 @@
         android:id="@+id/videoView"
         android:layout_width="215dp"
         android:layout_height="104dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/queText" />
+        app:layout_constraintTop_toBottomOf="@+id/queText"
+        android:scaleType="fitCenter"/>
 
     <Button
         android:id="@+id/resultbutton"

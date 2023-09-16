@@ -39,7 +39,6 @@ public class InstructionsPage extends AppCompatActivity {
             if (getItem(0) < 3){
                 mSlideViewPager.setCurrentItem(getItem(1), true);
             }else {
-
                 Intent i = new Intent(InstructionsPage.this, HearingTestActivity.class);
                 startActivity(i);
                 finish();
@@ -92,7 +91,7 @@ public class InstructionsPage extends AppCompatActivity {
                 backBtn.setVisibility(View.INVISIBLE);
             }
             if(position == 3){
-                nextBtn.setText("Finish");
+                nextBtn.setText("Start Test");
                 skipBtn.setVisibility(View.INVISIBLE);
             }else {
                 nextBtn.setText("Next");
