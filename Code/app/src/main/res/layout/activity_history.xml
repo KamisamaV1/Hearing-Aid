@@ -33,10 +33,12 @@
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
             android:layout_width="match_parent"
             android:layout_height="583dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:visibility="visible"
             tools:listitem="@layout/history_cardview_design" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,7 @@ import androidx.room.RoomDatabase;
 public abstract class AppDatabase extends RoomDatabase {
     private static final String dbName="AppDB";
     private static AppDatabase appDatabase;
+
     public static synchronized AppDatabase getAppDatabase(Context context)
     {
         if(appDatabase==null)
