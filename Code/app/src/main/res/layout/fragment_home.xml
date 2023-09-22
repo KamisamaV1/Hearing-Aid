@@ -14,33 +14,66 @@
         android:layout_height="match_parent">
 
         <!-- TextView for "Noise Suppression Modes" -->
+
+        <Button
+            android:id="@+id/buttonStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/seekBarGain"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="83dp"
+            android:layout_marginTop="133dp"
+            android:layout_marginEnd="243dp"
+            android:layout_marginBottom="200dp"
+            android:backgroundTint="@color/black"
+            android:text="Start"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonStop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/seekBarGain"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="240dp"
+            android:layout_marginTop="133dp"
+            android:layout_marginEnd="83dp"
+            android:layout_marginBottom="200dp"
+            android:backgroundTint="@color/black"
+            android:text="Stop"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/textViewNoiseSuppression"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Noise Suppression Mode"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="100dp"
-            android:layout_centerHorizontal="true"/>
+            android:text="Noise Suppression Mode"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <RelativeLayout
+            android:id="@+id/radioGroupContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/textViewNoiseSuppression"
             android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
-            android:id="@+id/radioGroupContainer"
-            >
+            android:gravity="center_horizontal">
 
             <RadioGroup
                 android:id="@+id/radioGroupNoiseSuppression"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
 
                 <!-- Radio Buttons for "On" and "Off" -->
 
@@ -53,25 +86,27 @@
                     android:checked="true"
                     android:gravity="center"
                     android:text="On"
+                    android:textColor="@drawable/checked"
                     android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="@drawable/checked"/>
+                    android:textStyle="bold" />
+
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:background="@color/jordy_blue" />
+
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/radioButtonOff"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:text="Off"
-                    android:textStyle="bold"
-                    android:textSize="14sp"
-                    android:gravity="center"
-                    android:checked="true"
                     android:background="@drawable/radio_button_off"
                     android:button="@android:color/transparent"
-                    android:textColor="@drawable/checked"/>
+                    android:checked="true"
+                    android:gravity="center"
+                    android:text="Off"
+                    android:textColor="@drawable/checked"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
             </RadioGroup>
 
@@ -82,13 +117,13 @@
             android:id="@+id/textViewGain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gain"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
             android:layout_below="@id/radioGroupContainer"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
-            android:layout_centerHorizontal="true"/>
+            android:text="Gain"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <!-- SeekBar for "Gain" -->
         <SeekBar
@@ -97,14 +132,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/textViewGain"
             android:layout_centerHorizontal="true"
-            android:scaleX="1.5"
-            android:scaleY="1.5"
+            android:layout_marginTop="10dp"
             android:max="60"
             android:progress="30"
-            android:layout_marginTop="10dp"
-            android:thumbTint="@color/gainsboro"
+            android:progressBackgroundTint="@color/pewter"
             android:progressTint="@color/prussian_blue"
-            android:progressBackgroundTint="@color/pewter" />
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:thumbTint="@color/gainsboro" />
 
     </RelativeLayout>
 
