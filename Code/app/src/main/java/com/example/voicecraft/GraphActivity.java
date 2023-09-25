@@ -23,7 +23,7 @@ import java.util.List;
 public class GraphActivity extends AppCompatActivity {
     Button backButton;
     private LineChart mChart;
-    String userName, date;
+    String date;
     int[] leftEar = new int[15];
     int[] rightEar = new int[15];
     ProgressDialog progressDialog;
@@ -49,7 +49,7 @@ public class GraphActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         date = extras.getString("Date");
-        userName = extras.getString("userName");
+
 
         // Show a loading dialog while fetching data
         progressDialog.show();
@@ -84,8 +84,8 @@ public class GraphActivity extends AppCompatActivity {
             // Populate updated data (you can adjust this as needed)
             updatedYValues1.add(new Entry(1000, ((leftEar[2] + leftEar[0] + leftEar[1]) / 3)));
             updatedYValues1.add(new Entry(2000, ((leftEar[3] + leftEar[4] + leftEar[5] + leftEar[6]) / 4)));
-            updatedYValues1.add(new Entry(3000, ((leftEar[6] + leftEar[7] + leftEar[8]) / 3)));
-            updatedYValues1.add(new Entry(4000, ((leftEar[9] + leftEar[10]) / 2)));
+            updatedYValues1.add(new Entry(3000, leftEar[7]));
+            updatedYValues1.add(new Entry(4000, ((leftEar[8]+leftEar[9] + leftEar[10]) / 3)));
             updatedYValues1.add(new Entry(5000, leftEar[11]));
             updatedYValues1.add(new Entry(6000, leftEar[12]));
             updatedYValues1.add(new Entry(7000, leftEar[13]));
@@ -93,8 +93,8 @@ public class GraphActivity extends AppCompatActivity {
 
             updatedYValues2.add(new Entry(1000, ((rightEar[2] + rightEar[0] + rightEar[1]) / 3)));
             updatedYValues2.add(new Entry(2000, ((rightEar[3] + rightEar[4] + rightEar[5] + rightEar[6]) / 4)));
-            updatedYValues2.add(new Entry(3000, ((rightEar[6] + rightEar[7] + rightEar[8]) / 3)));
-            updatedYValues2.add(new Entry(4000, ((rightEar[9] + rightEar[10]) / 2)));
+            updatedYValues2.add(new Entry(3000, rightEar[7]));
+            updatedYValues2.add(new Entry(4000, ((rightEar[8]+rightEar[9] + rightEar[10]) / 3)));
             updatedYValues2.add(new Entry(5000, rightEar[11]));
             updatedYValues2.add(new Entry(6000, rightEar[12]));
             updatedYValues2.add(new Entry(7000, rightEar[13]));
@@ -127,7 +127,7 @@ public class GraphActivity extends AppCompatActivity {
 
     private void getData() {
         AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
-        List<Calibration> calibration = database.calibrationDao().getAllCalibrations(userName, date);
+        List<Calibration> calibration = database.calibrationDao().getAllCalibrations(date);
         for (int i = 0; i < leftEar.length; i++) {
             leftEar[i] = calibration.get(i).getLossLeftEar();
             Log.d("TAG",leftEar[i] + " " );

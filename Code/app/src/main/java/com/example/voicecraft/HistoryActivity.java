@@ -5,10 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity {
@@ -16,29 +16,28 @@ public class HistoryActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private SharedPreferences sharedPreferences;
 
-    //private AppDatabase appDatabase;
-    //private User userList = getSharedPreferences();
-    //SharedPreferences sharedPreferences = getSharedPreferences("user_shared_preferences", MODE_PRIVATE);
-   // private ArrayList<User>userList = new ArrayList<>();
-   // private ArrayList<Integer>hearingTestDateList = new ArrayList<>();
+    List<String> date;
+    String userName;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
+        userName = sharedPreferences.getString("loggedInUserName", "");
 
         if (getApplicationContext() != null) {
             sharedPreferences = getSharedPreferences("user_shared_preferences", MODE_PRIVATE);
         }
 
-        User user = new User();
-        user.setUserName(sharedPreferences.getString("user_name", null));
-
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(HistoryActivity.this));
-        HistoryRecyclerViewAdapter adapter = new HistoryRecyclerViewAdapter(user); // userList should be the data you want to display
+        HistoryRecyclerViewAdapter adapter = new HistoryRecyclerViewAdapter(date, userName); // userList should be the data you want to display
         recyclerView.setAdapter(adapter);
-
-
     }
+    void getData(){
+        AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
+        date = database.calibrationDao().getUniqueDates();
+    }
+
 }
