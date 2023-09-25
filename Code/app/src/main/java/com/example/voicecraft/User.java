@@ -40,9 +40,7 @@ public class User {
         this.Email = email;
     }
 
-    public String getUserName() {
-        return userName;
-    }
+    public String getUserName() { return userName; }
 
     public void setUserName(String userName) {
         this.userName = userName;
@@ -71,4 +69,5 @@ public class User {
     public void setAddress(String address) {
         this.Address = address;
     }
+
 }
