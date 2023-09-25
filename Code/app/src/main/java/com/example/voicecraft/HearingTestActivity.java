@@ -24,7 +24,9 @@ import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class HearingTestActivity extends AppCompatActivity {
     private RadioButton leftButton, rightButton;
@@ -47,13 +49,11 @@ public class HearingTestActivity extends AppCompatActivity {
     private int dbrow = 0; // index volume
 
     private final Handler handler = new Handler();
-    private final Calendar calendar = Calendar.getInstance();
-    private final int year = calendar.get(Calendar.YEAR);
-    private final int month = calendar.get(Calendar.MONTH) + 1;
-    private final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
     private Intent result;
-    private final String currentDate = day + "-" + month + "-" + year;
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    Date date =new Date();
+    private final String currentDate = simpleDateFormat.format(date);
     private String loggedInUserName;
 
     final AudioTrack audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
@@ -250,8 +250,8 @@ public class HearingTestActivity extends AppCompatActivity {
             // Perform your time-consuming task here
             for (int i = 0; i < frequencies.length; i++) {
                 insertData(currentDate, frequencies[i], leftEarLoss[i], rightEarLoss[i]);
-                Log.d("TAG", leftEarLoss[i] + " ");
-                Log.d("TAG", rightEarLoss[i] + " ");
+                //Log.d("TAG", leftEarLoss[i] + " ");
+                //Log.d("TAG", rightEarLoss[i] + " ");
             }
             // Update the UI on the main thread after the task is done
             runOnUiThread(() -> {
@@ -267,7 +267,6 @@ public class HearingTestActivity extends AppCompatActivity {
         builder.setPositiveButton("Audiogram chart", (dialog, which) -> {
             result = new Intent(getBaseContext(), GraphActivity.class);
             result.putExtra("Date", currentDate);
-            result.putExtra("userName", loggedInUserName);
             startActivity(result);
             finish();
         });

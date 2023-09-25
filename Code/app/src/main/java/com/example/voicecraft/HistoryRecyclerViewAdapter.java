@@ -11,22 +11,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.BreakIterator;
-import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryRecyclerViewAdapter.ViewHolder> {
-    private User user;
     private Context context;
-
     private SharedPreferences sharedPreferences;
+    String userName;
+    List<String> date;
 
-    public HistoryRecyclerViewAdapter(SharedPreferences sharedPreferences) {
-        this.sharedPreferences = sharedPreferences;
-    }
-    public HistoryRecyclerViewAdapter(User user) {
-        this.user = user;
-        //this.context = context;
+    public HistoryRecyclerViewAdapter(List<String> date, String userName) {
+        this.date = date;
+        this.userName = userName;
     }
 
 
@@ -40,7 +35,7 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryRecy
     @Override
     public void onBindViewHolder(@NonNull HistoryRecyclerViewAdapter.ViewHolder holder, int position) {
         //User user = userList.get(position);
-        holder.usernameTextView.setText(user.getUserName());
+        holder.usernameTextView.setText(userName);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,12 +45,11 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryRecy
 
             }
         });
-
     }
 
     @Override
     public int getItemCount() {
-        return 1;
+        return date.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
