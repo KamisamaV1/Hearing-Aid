@@ -2,9 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.RECORD_AUDIO"></uses-permission>
-    <uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
-    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"></uses-permission>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="Manifest.permission.CAPTURE_AUDIO_OUTPUT" />
+
+    <uses-feature android:name="android.hardware.audio.low_latency" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +18,11 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.VoiceCraft"
         tools:targetApi="31">
+        <activity
+            android:name=".HelpPageActivity"
+            android:exported="false"
+            android:label="@string/title_activity_help_page"
+            android:theme="@style/Base.Theme.VoiceCraft" />
         <activity
             android:name=".HistoryActivity"
             android:exported="false" />
@@ -51,7 +59,10 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
-    <uses-feature android:name="android.hardware.audio.low_latency"></uses-feature>
 
 </manifest>

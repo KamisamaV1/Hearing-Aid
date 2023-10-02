@@ -19,13 +19,7 @@ public class HearTestFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        SharedPreferences sharedPref = requireActivity().getSharedPreferences("user_shared_preferences", requireContext().MODE_PRIVATE);
-        String userName = sharedPref.getString("loggedInUserName", "");
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("UserName", userName);
-        editor.apply();
         return inflater.inflate(R.layout.fragment_hear_test, container, false);
-
     }
 
     @Override
