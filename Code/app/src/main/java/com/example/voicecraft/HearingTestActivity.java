@@ -1,23 +1,18 @@
 package com.example.voicecraft;
+
 import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.MediaController;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
+
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -25,37 +20,30 @@ import android.widget.VideoView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class HearingTestActivity extends AppCompatActivity {
     private RadioButton leftButton, rightButton;
-    private Button canHearButton, cantHearButton, stopButton, playButton, resultbutton;
+    private Button canHearButton, cantHearButton, stopButton, playButton, resultButton;
     private TextView dBText, feqText;
     private VideoView videoView;
-
     private final Integer[] frequencies = {200, 600, 1000, 1400, 1800, 2200, 2600, 3000, 3400, 3800, 4200, 5000, 6000, 7000, 8000}; // Frequencies in Hz
     private final Integer[] decibels = {10, 20, 30, 40, 50, 60, 70, 80, 90};
-    private final int duration = 10; //tone duration in seconds
+    private final int duration = 10; // tone duration in seconds
     private final int sampleRate = 44100;// sample rate, 441000 times per second
     private final int numSamples = duration * sampleRate;
     private final byte[] generatedSnd = new byte[2 * numSamples];
-
     private int leftEarFlag = 1, rightEarFlag = 0;
     private final int[] leftEarLoss = new int[15];
     private final int[] rightEarLoss = new int[15];
-
     private int frqrow = 0; // index frequency
     private int dbrow = 0; // index volume
-
     private final Handler handler = new Handler();
-
     private Intent result;
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     Date date =new Date();
     private final String currentDate = simpleDateFormat.format(date);
     private String loggedInUserName;
-
     final AudioTrack audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
             sampleRate, AudioFormat.CHANNEL_OUT_MONO,
             AudioFormat.ENCODING_PCM_16BIT, generatedSnd.length,
@@ -83,7 +71,7 @@ public class HearingTestActivity extends AppCompatActivity {
         dBText = findViewById(R.id.dbText);
         feqText = findViewById(R.id.fqText);
         videoView = findViewById(R.id.videoView);
-        resultbutton = findViewById(R.id.resultbutton);
+        resultButton = findViewById(R.id.resultbutton);
     }
 
     private void setListeners() {
@@ -96,7 +84,7 @@ public class HearingTestActivity extends AppCompatActivity {
 
         cantHearButton.setOnClickListener(v -> handleCantHearButtonClick());
 
-        resultbutton.setOnClickListener(this::showAlertDialogButtonClicked);
+        resultButton.setOnClickListener(this::showAlertDialogButtonClicked);
     }
 
     private void handlePlayButtonClick() {
@@ -180,7 +168,7 @@ public class HearingTestActivity extends AppCompatActivity {
             canHearButton.setEnabled(false);
             playButton.setVisibility(View.INVISIBLE);
             stopButton.setVisibility(View.INVISIBLE);
-            resultbutton.setVisibility(View.VISIBLE);
+            resultButton.setVisibility(View.VISIBLE);
         }
         if (rightEarFlag == 0) {
             Toast.makeText(HearingTestActivity.this, "Now the sound channel will be changed to examine the right ear", Toast.LENGTH_SHORT).show();
@@ -241,6 +229,7 @@ public class HearingTestActivity extends AppCompatActivity {
                         canHearButton.setEnabled(true);
                     }
                 });
+
             }
         }).start();
     }

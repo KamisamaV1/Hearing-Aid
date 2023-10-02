@@ -80,7 +80,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
         stopButton.setOnClickListener(view -> {
             // Stop the audio processing
             isRecording = false;
@@ -100,14 +99,16 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        radioGroupNoiseSuppression.setOnCheckedChangeListener((group, checkedId) -> {
-            switch (checkedId) {
-                case RADIO_BUTTON_ON:
-                    isNoiseReductionOn = true;
-                    break;
-                case RADIO_BUTTON_OFF:
-                    isNoiseReductionOn = false;
-                    break;
+        radioButtonOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isNoiseReductionOn = true;
+            }
+        });
+        radioButtonOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isNoiseReductionOn = false;
             }
         });
 
@@ -131,67 +132,68 @@ public class HomeFragment extends Fragment {
         });
     }
 
-
     private void startAudioPlayback() {
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.RECORD_AUDIO}, 0);
             return;
         }
-                int sampleRate = AudioTrack.getNativeOutputSampleRate(AudioManager.STREAM_MUSIC);
-                int bufferSize = AudioRecord.getMinBufferSize(
-                        sampleRate,
-                        AudioFormat.CHANNEL_IN_MONO,
-                        AudioFormat.ENCODING_PCM_16BIT
-                );
-                // Create audio buffers
-                short[] buffer = new short[bufferSize];
+        int sampleRate = AudioTrack.getNativeOutputSampleRate(AudioManager.STREAM_MUSIC);
+        int bufferSize = AudioRecord.getMinBufferSize(
+                sampleRate,
+                AudioFormat.CHANNEL_IN_MONO,
+                AudioFormat.ENCODING_PCM_16BIT
+        );
+        // Create audio buffers
+        int powerOfTwoBufferSize = 1;
+        while (powerOfTwoBufferSize < bufferSize) {
+            powerOfTwoBufferSize *= 2;
+        }
+        short[] buffer = new short[powerOfTwoBufferSize];
 
-                // Create AudioRecord and AudioTrack objects
-                if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
-                    return;
-                }
-                audioRecord = new AudioRecord(MediaRecorder.AudioSource.DEFAULT,
-                        sampleRate,
-                        AudioFormat.CHANNEL_IN_STEREO,
-                        AudioFormat.ENCODING_PCM_16BIT,
-                        bufferSize);
+        // Create AudioRecord and AudioTrack objects
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        audioRecord = new AudioRecord(MediaRecorder.AudioSource.VOICE_PERFORMANCE,
+                sampleRate,
+                AudioFormat.CHANNEL_IN_STEREO,
+                AudioFormat.ENCODING_PCM_16BIT,
+                bufferSize);
 
-                audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
-                        sampleRate,
-                        AudioFormat.CHANNEL_OUT_STEREO,
-                        AudioFormat.ENCODING_PCM_16BIT,
-                        bufferSize,
-                        AudioTrack.MODE_STREAM);
+        audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
+                sampleRate,
+                AudioFormat.CHANNEL_OUT_STEREO,
+                AudioFormat.ENCODING_PCM_16BIT,
+                bufferSize,
+                AudioTrack.MODE_STREAM,
+                AudioTrack.PERFORMANCE_MODE_LOW_LATENCY);
 
-                // Start recording and playback
-                audioRecord.startRecording();
-                audioTrack.play();
+        // Start recording and playback
+        audioRecord.startRecording();
+        audioTrack.play();
 
-                // Continuously read audio data from the AudioRecord object and process it
-                while (isRecording) {
-                    int numSamples = audioRecord.read(buffer, 0, bufferSize);
-                    if (isNoiseReductionOn == true){
-                        Log.d(TAG, "isNoiseReductionOn: "+isNoiseReductionOn);
-                        short[] processedBuffer = ns.applyNoiseReduction(buffer,10000000);
-                        audioTrack.write(processedBuffer, 0, numSamples);
-                    } else if (isRecording == false) {
-                        audioTrack.write(buffer, 0, numSamples);
-                        Log.d(TAG, "isNoiseReductionOn: "+isNoiseReductionOn);
-                    } else {
-                        audioTrack.write(buffer, 0, numSamples);
-                        Log.d(TAG, "isNoiseReductionOn: "+isNoiseReductionOn);
-                    }
+        // Continuously read audio data from the AudioRecord object and process it
+        while (isRecording) {
+            int numSamples = audioRecord.read(buffer, 0, bufferSize);
+            if (isNoiseReductionOn == true) {
+                short[] processedBuffer = ns.applyNoiseReduction(buffer, 10000);
+                audioTrack.write(processedBuffer, 0, numSamples);
+            } else if (isRecording == false) {
+                audioTrack.write(buffer, 0, numSamples);
+            } else {
+                audioTrack.write(buffer, 0, numSamples);
 
-                }
+            }
+
+        }
     }
-
 
     private void setAudioGain(int gain) {
         // Adjust audio gain (volume) based on the gain value and maxGain

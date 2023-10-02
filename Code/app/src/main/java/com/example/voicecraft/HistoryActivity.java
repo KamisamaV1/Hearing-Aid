@@ -9,14 +9,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity {
-
     private RecyclerView recyclerView;
     private SharedPreferences sharedPreferences;
-
-    List<String> date;
+    List<String> date = new ArrayList<>();
     String userName;
 
     @SuppressLint("MissingInflatedId")
@@ -35,6 +34,7 @@ public class HistoryActivity extends AppCompatActivity {
         HistoryRecyclerViewAdapter adapter = new HistoryRecyclerViewAdapter(date, userName); // userList should be the data you want to display
         recyclerView.setAdapter(adapter);
     }
+
     void getData(){
         AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
         date = database.calibrationDao().getUniqueDates();

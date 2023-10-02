@@ -77,7 +77,7 @@
 
                 <!-- Radio Buttons for "On" and "Off" -->
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <RadioButton
                     android:id="@+id/radioButtonOn"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
@@ -95,7 +95,7 @@
                     android:layout_height="match_parent"
                     android:background="@color/jordy_blue" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <RadioButton
                     android:id="@+id/radioButtonOff"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
