@@ -66,4 +66,3 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryRecy
         }
     }
 }
-
