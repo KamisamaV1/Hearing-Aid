@@ -14,6 +14,7 @@
         android:backgroundTint="@color/gainsboro"
         app:cardCornerRadius="15dp"
         app:cardElevation="15dp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -40,16 +41,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:text="02-01-2023"
+                android:hint="date"
                 app:layout_constraintBottom_toTopOf="@+id/textView_Username"
                 app:layout_constraintStart_toEndOf="@+id/profile_image"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView_Username"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="31dp"
+                android:layout_width="79dp"
+                android:layout_height="21dp"
+                android:layout_marginStart="28dp"
+                android:hint="username"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/profile_image"
