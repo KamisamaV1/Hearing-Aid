@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Date;
 import java.util.List;
 
 public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryRecyclerViewAdapter.ViewHolder> {
@@ -49,7 +50,11 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryRecy
 
     @Override
     public int getItemCount() {
-        return date.size();
+        if (date != null) {
+            return date.size();
+        } else {
+            return 0; // or handle the null case as appropriate for your application
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
