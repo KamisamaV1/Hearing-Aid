@@ -25,6 +25,7 @@ public class HistoryActivity extends AppCompatActivity {
 
     List<String> dateList = new ArrayList<>();
     String userName;
+    HistoryRecyclerViewAdapter adapter;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -40,6 +41,7 @@ public class HistoryActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(HistoryActivity.this));
+        adapter = new HistoryRecyclerViewAdapter(dateList, userName);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -50,13 +52,15 @@ public class HistoryActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         // Update UI components here
+                        recyclerView.setAdapter(adapter);
                     }
                 });
             }
         }).start();
         Log.d(TAG,dateList+ "fgh");
-        HistoryRecyclerViewAdapter adapter = new HistoryRecyclerViewAdapter(dateList, userName);
-        recyclerView.setAdapter(adapter);
+
+
+
     }
     void getData(){
         AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
@@ -72,8 +76,10 @@ public class HistoryActivity extends AppCompatActivity {
             try {
                 Date date = dateFormat.parse(dateString);
                 dateList.add(String.valueOf(date));
+                adapter.notifyItemInserted(dateList.size() - 1);
             } catch (ParseException e) {
                 e.printStackTrace(); // Handle parsing exceptions if necessary
+                Log.d(TAG, "Error in data retrieval: " + e.getMessage());
             }
         }
 

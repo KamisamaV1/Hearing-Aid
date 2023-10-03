@@ -1,8 +1,11 @@
 package com.example.voicecraft;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,8 +44,14 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryRecy
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, GraphActivity.class);
-                context.startActivity(intent);
+                try {
+                    Intent intent = new Intent(context, GraphActivity.class);
+                    context.startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.d(TAG,context+" nothing after clicking on card");
+                    // Log the error or take appropriate actions to handle the exception.
+                }
 
             }
         });
