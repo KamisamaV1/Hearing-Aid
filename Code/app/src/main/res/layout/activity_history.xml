@@ -40,6 +40,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:visibility="visible"
+            android:clickable="true"
             tools:listitem="@layout/history_cardview_design" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
