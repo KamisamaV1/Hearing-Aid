@@ -19,9 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView signupRedirect, forgotPassword;
     Button loginButton;
     EditText uName, pWord;
-
     private String username;
-
     AppDatabase appDatabase;
 
     public String getUsername() {
@@ -32,6 +30,13 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        if (isLoggedIn()) {
+            // Automatically navigate to the main activity
+            startActivity(new Intent(this, MainActivity.class));
+            finish(); // Close the login activity
+        }
+
         signupRedirect = findViewById(R.id.signupText);
         loginButton = findViewById(R.id.loginButton);
         signupRedirect.setOnClickListener(view -> {
@@ -105,7 +110,12 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    private boolean isLoggedIn() {
+        // Check if the user's authentication token or session data exists in SharedPreferences
+        SharedPreferences sharedPref = getSharedPreferences("user_shared_preferences", Context.MODE_PRIVATE);
+        return sharedPref.contains("loggedInUserName");
     }
 }
 

@@ -4,32 +4,167 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/jordy_blue"
     tools:context=".SecondFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/jordy_blue"
         android:padding="16dp">
 
-        <Button
-            android:id="@+id/button_second"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/previous"
-            app:layout_constraintBottom_toTopOf="@id/textview_second"
+            android:orientation="vertical"
+            android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textview_second"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/lorem_ipsum"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_second" />
+            <!-- Title: What is an Audiogram Graph? -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="What is an Audiogram Graph?"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- Introduction -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="An audiogram graph is a visual representation of your hearing abilities, providing valuable insights into your hearing health. Think of it as a map that shows how well you can hear different frequencies, from low-pitched sounds (like a deep bass note) to high-pitched sounds (such as a bird's chirping)."
+                android:textColor="#000000" />
+
+            <!-- Subheading: Understanding the Audiogram -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Understanding the Audiogram"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Description of Frequency Axis -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Frequency Axis: On the horizontal axis of the graph, you'll find different frequencies measured in Hertz (Hz). These frequencies are arranged from low to high, much like the keys on a piano, with low frequencies on the left and high frequencies on the right."
+                android:textColor="#000000" />
+
+            <!-- Description of Volume or Intensity Axis -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Volume or Intensity Axis: The vertical axis measures the loudness or intensity of sounds in decibels (dB). It reflects how loud a sound needs to be for you to hear it. Softer sounds are at the top, and louder sounds are at the bottom."
+                android:textColor="#000000" />
+
+            <!-- Description of The Audiogram Line -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="The Audiogram Line: Your hearing abilities are represented by a line or series of points on the graph. This line shows the softest sounds you can hear at different frequencies. The higher the line, the better your hearing is at that frequency."
+                android:textColor="#000000" />
+
+            <!-- Subheading: Types of Hearing Loss -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Types of Hearing Loss"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Description of Types of Hearing Loss -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Audiogram graphs help audiologists and healthcare professionals determine the type and degree of hearing loss:"
+                android:textColor="#000000" />
+
+            <!-- List of Types of Hearing Loss -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="• Normal Hearing: If the line is within the normal range, your hearing is considered healthy at that frequency."
+                android:textColor="#000000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="• Hearing Loss: If the line dips below the normal range, it indicates hearing loss. The depth of the dip tells you the degree of hearing loss: mild, moderate, severe, or profound."
+                android:textColor="#000000" />
+
+            <!-- Subheading: Interpreting Your Audiogram -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Interpreting Your Audiogram"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Description of Interpreting Your Audiogram -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Your audiogram is unique to you, and understanding it can help you and your healthcare provider make informed decisions about your hearing care. It may guide recommendations for hearing aids, cochlear implants, or other treatments."
+                android:textColor="#000000" />
+
+            <ImageView
+                android:id="@+id/imageViewNoiseSuppression"
+                android:layout_width="344dp"
+                android:layout_height="286dp"
+                android:src="@drawable/audiogram_image" />
+
+            <!-- Subheading: Regular Audiograms -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Regular Audiograms"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Description of Regular Audiograms -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Regular audiograms are essential, especially as you age or if you're exposed to loud noises. They serve as a valuable baseline for tracking your hearing health over time."
+                android:textColor="#000000" />
+
+            <!-- Conclusion -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="If you have questions about your audiogram or need assistance interpreting it, don't hesitate to consult with a qualified audiologist or hearing healthcare professional. They can provide personalized guidance and support to ensure you continue to enjoy the sounds of life to the fullest."
+                android:textColor="#000000" />
+
+            <Button
+                android:id="@+id/button_second"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="18dp"
+                android:text="Back"/>
+
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
