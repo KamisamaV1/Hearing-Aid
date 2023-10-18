@@ -16,11 +16,11 @@ import java.util.List;
 
 public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryRecyclerViewAdapter.ViewHolder> {
     private Context context;
-    private SharedPreferences sharedPreferences;
     String userName;
     List<String> date;
 
-    public HistoryRecyclerViewAdapter(List<String> date, String userName) {
+    public HistoryRecyclerViewAdapter(Context context,List<String> date, String userName) {
+        this.context = context;
         this.date = date;
         this.userName = userName;
     }
@@ -35,13 +35,18 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryRecy
 
     @Override
     public void onBindViewHolder(@NonNull HistoryRecyclerViewAdapter.ViewHolder holder, int position) {
-        //User user = userList.get(position);
         holder.usernameTextView.setText(userName);
+        String itemDate = date.get(position);
+
+        // Set the dateTextView with the item's date
+        holder.dateTextView.setText(itemDate);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, GraphActivity.class);
+                intent.putExtra("Date", itemDate);
+                intent.putExtra("userName", userName);
                 context.startActivity(intent);
 
             }
@@ -60,9 +65,12 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryRecy
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView usernameTextView;
 
+        public TextView dateTextView;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             usernameTextView = itemView.findViewById(R.id.textView_Username);
+            dateTextView  = itemView.findViewById(R.id.textView_Date);
         }
     }
 }

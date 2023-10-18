@@ -27,6 +27,7 @@ public class GraphActivity extends AppCompatActivity {
     Button backButton;
     private LineChart mChart;
     String date;
+    String username;
     int[] leftEar = new int[15];
     int[] rightEar = new int[15];
     ProgressDialog progressDialog;
@@ -59,6 +60,7 @@ public class GraphActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         date = extras.getString("Date");
+        username = extras.getString("userName");
 
         // Show a loading dialog while fetching data
         progressDialog.show();
@@ -149,8 +151,10 @@ public class GraphActivity extends AppCompatActivity {
     }
 
     private void getData() {
+        Log.d("TAG", "getData: date "+date);
         AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
-        List<Calibration> calibration = database.calibrationDao().getAllCalibrations(date);
+        List<Calibration> calibration = database.calibrationDao().getAllCalibrations(date, username);
+        Log.d("TAG", "getData: "+calibration);
         for (int i = 0; i < leftEar.length; i++) {
             leftEar[i] = calibration.get(i).getLossLeftEar();
             Log.d("TAG", leftEar[i] + " ");

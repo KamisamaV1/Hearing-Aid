@@ -3,6 +3,7 @@ package com.example.voicecraft;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
@@ -11,8 +12,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -44,6 +47,12 @@ public class HearingTestActivity extends AppCompatActivity {
     Date date =new Date();
     private final String currentDate = simpleDateFormat.format(date);
     private String loggedInUserName;
+    private boolean isFeqTextVisible = true;
+    private boolean isDecTextVisible = true;
+    private int blinkCount = 0;
+    private static final int MAX_BLINK_COUNT = 3;
+    private Handler blinkingHandler = new Handler();
+    private static final long BLINK_INTERVAL = 500;
     final AudioTrack audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
             sampleRate, AudioFormat.CHANNEL_OUT_MONO,
             AudioFormat.ENCODING_PCM_16BIT, generatedSnd.length,
@@ -53,7 +62,18 @@ public class HearingTestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hearingtest);
+        ImageView headphoneImage = findViewById(R.id.headphoneImg);
+        RadioGroup radioSelectEar=findViewById(R.id.radioGroupEar);
+        radioSelectEar.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.leftRadioButton) {
+                headphoneImage.setImageResource(R.drawable.headphoneleft);
+            } else if (checkedId == R.id.rightRadioButton) {
+                headphoneImage.setImageResource(R.drawable.headphoneright);
+            }
+        });
         initView();
+        canHearButton.setEnabled(false);
+        cantHearButton.setEnabled(false);
         setListeners();
         initVideoView();
         SharedPreferences sharedPref = getSharedPreferences("user_shared_preferences", MODE_PRIVATE);
@@ -88,6 +108,8 @@ public class HearingTestActivity extends AppCompatActivity {
     }
 
     private void handlePlayButtonClick() {
+        canHearButton.setEnabled(true);
+        cantHearButton.setEnabled(true);
         double sound =calculateAmplitude(decibels[dbrow]);
         genTone(frequencies[frqrow], sound);
         playSound();
@@ -147,6 +169,7 @@ public class HearingTestActivity extends AppCompatActivity {
                 dbrow = 0;
                 leftEarFlag = 0;
                 rightEarFlag = 1;
+                updateText();
             }
         }
         if (decibels[dbrow] >= 90) {
@@ -180,12 +203,38 @@ public class HearingTestActivity extends AppCompatActivity {
             dbrow = 0;
             leftEarFlag = 0;
             rightEarFlag = 1;
+            updateText();
         }
         //updateText();
     }
 
     private void updateText() {
         feqText.setText("Frequency: " + String.valueOf(frequencies[frqrow])+"Hz");
+        /*Runnable blinkingRunnable = new Runnable() {
+            @Override
+            public void run() {
+                if (isFeqTextVisible) {
+                    feqText.setVisibility(View.INVISIBLE);
+                } else {
+                    feqText.setVisibility(View.VISIBLE);
+                }
+                isFeqTextVisible = !isFeqTextVisible;
+
+                // Increment the blink count
+                blinkCount++;
+
+                if (blinkCount < MAX_BLINK_COUNT) {
+                    // Schedule the next run after the blinking interval
+                    blinkingHandler.postDelayed(this, BLINK_INTERVAL);
+                } else {
+                    // Stop blinking after reaching the maximum count
+                    blinkingHandler.removeCallbacks(this);
+                }
+            }
+        };
+        // Start the initial blinking
+        blinkingHandler.postDelayed(blinkingRunnable, BLINK_INTERVAL);*/
+
         dBText.setText("Decibel: " + String.valueOf(decibels[dbrow])+"dB");
     }
 
@@ -256,6 +305,7 @@ public class HearingTestActivity extends AppCompatActivity {
         builder.setPositiveButton("Audiogram chart", (dialog, which) -> {
             result = new Intent(getBaseContext(), GraphActivity.class);
             result.putExtra("Date", currentDate);
+            result.putExtra("userName", loggedInUserName);
             startActivity(result);
             finish();
         });

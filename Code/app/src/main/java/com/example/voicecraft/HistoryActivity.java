@@ -50,22 +50,23 @@ public class HistoryActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         // Update UI components here
+                        Log.d(TAG,dateList+ "fgh");
+                        HistoryRecyclerViewAdapter adapter = new HistoryRecyclerViewAdapter(HistoryActivity.this,dateList, userName);
+                        recyclerView.setAdapter(adapter);
                     }
                 });
             }
         }).start();
-        Log.d(TAG,dateList+ "fgh");
-        HistoryRecyclerViewAdapter adapter = new HistoryRecyclerViewAdapter(dateList, userName);
-        recyclerView.setAdapter(adapter);
+
     }
     void getData(){
         AppDatabase database = AppDatabase.getAppDatabase(getApplicationContext());
-        List<String> dateStrings = database.calibrationDao().getUniqueDates();
+        dateList = database.calibrationDao().getUniqueDates();
+        Log.d(TAG, "getUniqueDates: "+ database.calibrationDao().getUniqueDates());
+        Log.d(TAG, "getData: dateString"+dateList);
 
-        // Create a SimpleDateFormat instance to parse date strings
+        /*// Create a SimpleDateFormat instance to parse date strings
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-
-
 
         // Iterate through the date strings and parse them into Date objects
         for (String dateString : dateStrings) {
@@ -77,7 +78,7 @@ public class HistoryActivity extends AppCompatActivity {
             }
         }
 
-        // Now, dateList contains Date objects representing your unique dates
+        // Now, dateList contains Date objects representing your unique dates*/
     }
 
 }

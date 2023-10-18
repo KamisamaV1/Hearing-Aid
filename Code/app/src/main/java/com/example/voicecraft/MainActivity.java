@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
             } else if ("profileFragment".equals(fragmentToLoad)) {
                 replaceFragment(new ProfileFragment());
             }
+        }else {
+            replaceFragment(new HomeFragment());
         }
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -68,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_help) {
             // Handle the help menu item click
+
             Intent it = new Intent(MainActivity.this, HelpPageActivity.class);
             startActivity(it);
             // Add your code here

@@ -1,4 +1,5 @@
 package com.example.voicecraft;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,6 +24,7 @@ public class ProfileFragment extends Fragment {
     private Button logoutButton;
     private Button history_button;
     private String username;
+
 
     @Nullable
     @Override
@@ -127,6 +129,10 @@ public class ProfileFragment extends Fragment {
     }
 
     private void logoutUser() {
+        SharedPreferences sharedPref = requireActivity().getSharedPreferences("user_shared_preferences", requireContext().MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.clear();
+        editor.apply();
         Intent intent = new Intent(getActivity(), LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);

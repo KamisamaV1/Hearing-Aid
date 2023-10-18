@@ -12,8 +12,8 @@ public interface CalibrationDao {
     @Insert
     void insertCalibration(Calibration calibration);
 
-    @Query("SELECT * FROM Calibration WHERE calibration_date=(:calibrationDate)")
-    List<Calibration> getAllCalibrations(String calibrationDate);
+    @Query("SELECT * FROM Calibration WHERE calibration_date=(:calibrationDate) and userName = (:userName)")
+    List<Calibration> getAllCalibrations(String calibrationDate, String userName);
 
     @Query("Select DISTINCT calibration_date from Calibration")
     List<String> getUniqueDates();
